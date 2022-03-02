@@ -21,11 +21,10 @@ describe('User', () => {
    "id": 3,
    "name": "Sibby Dawidowitsch",
    "travelerType": "shopper",
-    },
-    ]
-    user1 = new User(travelerObjs[0])
-    user2 = new User(travelerObjs[1])
-    user3 = new User(travelerObjs[2])
+ }];
+    user1 = new User(travelerObjs[0]);
+    user2 = new User(travelerObjs[1]);
+    user3 = new User(travelerObjs[2]);
   });
 
   it('Should be a function', () => {

@@ -51,4 +51,9 @@ describe('User', () => {
     expect(user2.travelerType).to.equal("thrill-seeker")
     expect(user3.travelerType).to.equal("shopper")
   })
+  it('Should have a property named trips that starts as an empty array', () => {
+    expect(user1.trips).to.be.an('array')
+    expect(user2.trips).to.be.an('array')
+    expect(user3.trips).to.be.an('array')
+  })
 })

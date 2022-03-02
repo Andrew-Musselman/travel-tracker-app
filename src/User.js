@@ -1,6 +1,8 @@
 class User {
-  constructor() {
-    
+  constructor(jsonObj) {
+    this.id = jsonObj.id
+    this.name = jsonObj.name
+    this.travelerType = jsonObj.travelerType
   }
 }
 

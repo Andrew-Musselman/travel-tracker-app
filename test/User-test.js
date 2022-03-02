@@ -6,12 +6,9 @@ describe('User', () => {
   let user1;
   let user2;
   let user3;
-  let travelers;
+  let travelerObjs;
   beforeEach(() => {
-    let user1 = new User(1)
-    let user2 = new User(2)
-    let user3 = new User(3)
-    let travelers = [
+    travelerObjs = [
       {
    "id": 1,
    "name": "Ham Leadbeater",
@@ -26,6 +23,9 @@ describe('User', () => {
    "travelerType": "shopper",
     },
     ]
+    user1 = new User(travelerObjs[0])
+    user2 = new User(travelerObjs[1])
+    user3 = new User(travelerObjs[2])
   });
 
   it('Should be a function', () => {

@@ -32,7 +32,7 @@ describe('Destination Repository', () => {
       destinationRepo = new DestinationRepository(destinations);
     })
     it('Should be a function', () => {
-      expect(DestinationRepository).to.be.a('funtion')
+      expect(DestinationRepository).to.be.a('function')
     })
     it('Should take in an array of objects and instantiate Destinations for each' , () => {
       expect(destinationRepo.data[0]).to.be.an.instanceof(Destination)

@@ -34,5 +34,37 @@ describe('Destination', () => {
     destination2 = new Destination(destinations[1]);
     destination3 = new Destination(destinations[2]);
   });
-
+  it('Should be a function', () => {
+    expect(Trip).to.be.a('function')
+  })
+  it('Should have a unique destination id', () => {
+    expect(destination1.id).to.equal(1)
+    expect(destination2.id).to.equal(2)
+    expect(destination3.id).to.equal(3)
+  })
+  it('Should have a destination name', () => {
+    expect(destination1.destination).to.equal("Lima, Peru")
+    expect(destination2.destination).to.equal("Stockholm, Sweden")
+    expect(destination3.destination).to.equal("Sydney, Austrailia")
+  })
+  it('Should have a lodging cost per day', () => {
+    expect(destination1.estimatedLodgingCostPerDay).to.equal(70)
+    expect(destination2.estimatedLodgingCostPerDay).to.equal(100)
+    expect(destination3.estimatedLodgingCostPerDay).to.equal(130)
+  })
+  it('Should have a flight cost', () => {
+    expect(destination1.estimatedFlightCostPerPerson).to.equal(400)
+    expect(destination2.estimatedFlightCostPerPerson).to.equal(780)
+    expect(destination3.estimatedFlightCostPerPerson).to.equal(950)
+  })
+  it('Should have an image', () => {
+    expect(destination1.image).to.be(true)
+    expect(destination2.image).to.be(true)
+    expect(destination3.image).to.be(true)
+  })
+  it('Should have alt text for the image', () => {
+    expect(destination1.alt).to.be(true)
+    expect(destination2.alt).to.be(true)
+    expect(destination3.alt).to.be(true)
+  })
 })

@@ -60,7 +60,7 @@ describe('Trip', () => {
     expect(trip2.destinationID).to.equal(25)
     expect(trip3.destinationID).to.equal(22)
   })
-  it('Should have a property that says how many travelers there are'. () => {
+  it('Should have a property that says how many travelers there are', () => {
     expect(trip1.travelers).to.equal(1)
     expect(trip2.travelers).to.equal(5)
     expect(trip3.travelers).to.equal(4)

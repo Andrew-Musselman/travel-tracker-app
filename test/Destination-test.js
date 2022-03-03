@@ -35,7 +35,7 @@ describe('Destination', () => {
     destination3 = new Destination(destinations[2]);
   });
   it('Should be a function', () => {
-    expect(Trip).to.be.a('function')
+    expect(Destination).to.be.a('function')
   })
   it('Should have a unique destination id', () => {
     expect(destination1.id).to.equal(1)
@@ -58,13 +58,13 @@ describe('Destination', () => {
     expect(destination3.estimatedFlightCostPerPerson).to.equal(950)
   })
   it('Should have an image', () => {
-    expect(destination1.image).to.be(true)
-    expect(destination2.image).to.be(true)
-    expect(destination3.image).to.be(true)
+    expect(destination1.image).to.equal("https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80")
+    expect(destination2.image).to.equal("https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")
+    expect(destination3.image).to.equal("https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")
   })
   it('Should have alt text for the image', () => {
-    expect(destination1.alt).to.be(true)
-    expect(destination2.alt).to.be(true)
-    expect(destination3.alt).to.be(true)
+    expect(destination1.alt).to.equal("overview of city buildings with a clear sky")
+    expect(destination2.alt).to.equal("city with boats on the water during the day time")
+    expect(destination3.alt).to.equal("opera house and city buildings on the water with boats")
   })
 })

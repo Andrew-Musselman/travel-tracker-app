@@ -11,6 +11,7 @@ class User {
     this.pastTrips = [];
     this.futureTrips = [];
     this.currentTrip = null;
+    this.pendingTrips = [];
   }
   getUsersTrips(tripRepo) {
     tripRepo.data.forEach(trip => {
@@ -22,16 +23,19 @@ class User {
   sortTrips() {
     let today = dayjs().format('YYYY/MM/DD')
     this.trips.forEach(trip => {
-      let tripStart = dayjs(trip.date);
-      let tripEnd = dayjs(trip.date).add(trip.duration, 'day');
-        // console.log(tripDates)
-      if (dayjs(today).isAfter(trip.date) && this.pastTrips.indexOf(trip) === -1) {
-        this.pastTrips.push(trip)
-      } else if (dayjs(today).isBefore(trip.date) && this.futureTrips.indexOf(trip) === -1) {
-        this.futureTrips.push(trip)
-      }
-      else if (dayjs(today) >= tripStart || dayjs(today) <= tripEnd) {
-        this.currentTrip = trip
+      if (trip.status === 'approved') {
+        let tripStart = dayjs(trip.date);
+        let tripEnd = dayjs(trip.date).add(trip.duration, 'day');
+        if (dayjs(today).isAfter(trip.date) && this.pastTrips.indexOf(trip) === -1) {
+          this.pastTrips.push(trip)
+        } else if (dayjs(today).isBefore(trip.date) && this.futureTrips.indexOf(trip) === -1) {
+          this.futureTrips.push(trip)
+        }
+        else if (dayjs(today) >= tripStart || dayjs(today) <= tripEnd) {
+          this.currentTrip = trip
+        }
+      } else if (trip.status === 'pending') {
+        this.pendingTrips.push(trip)
       }
     })
   }

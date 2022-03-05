@@ -85,7 +85,25 @@ describe('User', () => {
       "duration": 18,
       "status": "approved",
       "suggestedActivities": []
-    },];
+      },{
+      "id": 23,
+      "userID": 1,
+      "destinationID": 24,
+      "travelers": 6,
+      "date": "2023/01/02",
+      "duration": 18,
+      "status": "pending",
+      "suggestedActivities": []
+      }, {
+      "id": 24,
+      "userID": 1,
+      "destinationID": 26,
+      "travelers": 5,
+      "date": "2022/11/15",
+      "duration": 7,
+      "status": "pending",
+      "suggestedActivities": []
+    }];
     user1 = new User(travelerObjs[0]);
     user2 = new User(travelerObjs[1]);
     user3 = new User(travelerObjs[2]);
@@ -147,6 +165,11 @@ describe('User', () => {
       user3.getUsersTrips(tripRepo)
       user3.sortTrips()
       expect(user3.currentTrip).to.eql(trips[2])
+    })
+    it('Should be able to sort pending trips', () => {
+      user1.getUsersTrips(tripRepo)
+      user1.sortTrips()
+      expect(user1.pendingTrips).to.eql([trips[6], trips[7]])
     })
   })
 })

@@ -1,6 +1,19 @@
 /* This is an example of how to import a partial scss file*/
 @import '_variables';
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 
 body {
   background: $primary-background;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
 }

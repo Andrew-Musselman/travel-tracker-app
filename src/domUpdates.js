@@ -17,7 +17,7 @@ const domUpdates = {
         <h3>${trip.destinationDetails.destination}</h3>
         <img src="${trip.destinationDetails.image}" alt="${trip.destinationDetails.alt}"/>
         <p>Travelers: ${trip.travelers} travelers</p>
-        <p>Leaving on: ${trip.date} date</p>
+        <p>Leaving on: ${trip.date}</p>
         <p>Length: ${trip.duration}</p>
         <p>Lodging: $${trip.destinationDetails.estimatedLodgingCostPerDay} / night</p>
         <p>Flight: $${trip.destinationDetails.estimatedFlightCostPerPerson} / person</p>

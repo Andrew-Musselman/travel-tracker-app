@@ -17,3 +17,20 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+.card-container {
+  display: grid;
+  grid-template-columns: 15em 15em 15em;
+  background-color: white;
+  width: 45em;
+}
+
+.card {
+  border: 1px solid black;
+  padding: 3em;
+  justify-self: center;
+}
+.card img {
+  height: 8em;
+  width: inherit;
+}

@@ -40,9 +40,9 @@ class User {
         let tripEnd = dayjs(trip.date).add(trip.duration, 'day');
         if (dayjs(today).isAfter(tripStart) && dayjs(today).isBefore(tripEnd)) {
           this.currentTrip = trip
-        } else if (dayjs(today).isAfter(trip.date) && this.pastTrips.indexOf(trip) === -1) {
+        } if (dayjs(today).isAfter(trip.date) && this.pastTrips.indexOf(trip) === -1) {
           this.pastTrips.push(trip)
-        } else if (dayjs(today).isBefore(trip.date) && this.futureTrips.indexOf(trip) === -1) {
+        } if (dayjs(today).isBefore(trip.date) && this.futureTrips.indexOf(trip) === -1) {
           this.futureTrips.push(trip)
         }
     } else if (trip.status === 'pending') {

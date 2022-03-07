@@ -37,3 +37,12 @@ main, nav {
   height: 8em;
   width: inherit;
 }
+
+.new-trip-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}

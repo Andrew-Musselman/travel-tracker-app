@@ -30,6 +30,9 @@ const domUpdates = {
   generateHeader(user) {
     userWelcome.innerText += ` ${user.name}`;
     userSpend.innerText = `You've spent $${user.getTotalSpentThisYear()} on trips this year`
+  },
+  toggleHidden(element) {
+    element.classList.toggle('hidden')
   }
 }
 

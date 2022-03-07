@@ -18,6 +18,8 @@ const allTripsBtn = document.querySelector('#all-trips');
 const pastTripsBtn = document.querySelector('#past-trips');
 const futureTripsBtn = document.querySelector('#future-trips');
 const pendingTripsBtn = document.querySelector('#pending-trips');
+const newTripBtn = document.querySelector('#new-trip-button');
+const newTripForm = document.querySelector('.new-trip-form')
 
 let ourUser;
 let tripData;
@@ -43,6 +45,9 @@ const getData = () => {
 }
 
 window.addEventListener('load', getData)
+newTripBtn.addEventListener('click', () => {
+  domUpdates.toggleHidden(newTripForm)
+})
 
 allTripsBtn.addEventListener('click', () => {
   domUpdates.generateTrips(ourUser.trips)

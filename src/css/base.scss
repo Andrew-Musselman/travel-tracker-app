@@ -7,28 +7,31 @@ body {
   background: $primary-background;
 }
 
-nav {
+
+main, nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
+  padding: 1em;
 }
 
 .card-container {
-  display: grid;
-  grid-template-columns: 15em 15em 15em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   background-color: white;
-  width: 45em;
+  width: 50em;
+  height: 50em;
+  overflow: scroll;
 }
 
 .card {
   border: 1px solid black;
+  width: 250px;
+  height: 400px;
   padding: 3em;
-  justify-self: center;
+  padding-top: 1em;
+  margin: .5em;
 }
 .card img {
   height: 8em;

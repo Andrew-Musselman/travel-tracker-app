@@ -19,7 +19,6 @@ const pastTripsBtn = document.querySelector('#past-trips');
 const futureTripsBtn = document.querySelector('#future-trips');
 const pendingTripsBtn = document.querySelector('#pending-trips');
 
-// let destinationGlideCards = document.querySelector('.glide__slides');
 let ourUser;
 let tripData;
 let destinationData;
@@ -38,12 +37,12 @@ const getData = () => {
   }).then(() => {
     console.log(ourUser)
     domUpdates.generateTrips(ourUser.trips)
-
+    domUpdates.generateHeader(ourUser)
   })
 
 }
 
-getData()
+window.addEventListener('load', getData)
 
 allTripsBtn.addEventListener('click', () => {
   domUpdates.generateTrips(ourUser.trips)

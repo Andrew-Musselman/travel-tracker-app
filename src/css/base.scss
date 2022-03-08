@@ -11,9 +11,15 @@ nav {
   background-color: $light-tan;
   height: 10%;
 }
+
 h3 {
   color: $light-tan;
   font-size: 2em;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
 }
 
 .button-container {

@@ -59,9 +59,7 @@ const domUpdates = {
     `<div class="card" tabIndex="0">
       <h4>${newTrip.destinationDetails.destination}</h4>
       <img src="${newTrip.destinationDetails.image}" alt="${newTrip.destinationDetails.alt}"/>
-      <p>Travelers: ${newTrip.travelers} travelers</p>
       <p>Leaving on: ${newTrip.date}</p>
-      <p>Length: ${newTrip.duration}</p>
       <p>Estimated cost: $${newTrip.calculateTripCost()}</p>
       <p>Status: ${newTrip.status}</p>
     </div>`

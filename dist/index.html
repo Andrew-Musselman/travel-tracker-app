@@ -13,9 +13,9 @@
   </nav>
   <main>
     <header>
-      <h2 id="user-welcome">Hello  </h2>
+      <h2 id="user-welcome"></h2>
       <p id="user-spend"></p>
-      <button id="new-trip-button">Plan a new trip</button>
+      <button id="new-trip-button" aria-expanded="false">Plan a new trip</button>
       <form class="new-trip-form hidden">
         <label for="destination">Where to?</label>
         <select id="destination" name="destination" select>
@@ -37,10 +37,10 @@
     <section class="trips">
       <h3>Trips</h3>
       <div class="button-container">
-        <button id="all-trips">All Trips</button>
-        <button id="past-trips">Past Trips</button>
-        <button id="future-trips">Upcoming Trips</button>
-        <button id="pending-trips">Pending Approval</button>
+        <button id="all-trips" aria-expanded="true">All Trips</button>
+        <button id="past-trips" aria-expanded="false">Past Trips</button>
+        <button id="future-trips" aria-expanded="false">Upcoming Trips</button>
+        <button id="pending-trips" aria-expanded="false">Pending Approval</button>
       </div>
       <div class="card-container">
       </div>

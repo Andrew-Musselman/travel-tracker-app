@@ -1,1 +1,15 @@
 $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+// @import './images/maldives-shifaaz-shamoon.jpg';
+$background-image: url(https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2452&q=80);
+
+$light-tan: #EDE0D4;
+$medium-tan: #E6CCB2;
+$dark-tan: #DDB892;
+$light-brown: #B08968;
+$medium-brown: #B08968;
+$dark-brown: #9C6644;
+
+@mixin border() {
+  border: $dark-brown;
+  border-radius: 3%;
+}

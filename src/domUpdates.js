@@ -23,9 +23,9 @@ const domUpdates = {
       `<div class="card" tabIndex="0">
         <h4>${trip.destinationDetails.destination}</h4>
         <img src="${trip.destinationDetails.image}" alt="${trip.destinationDetails.alt}"/>
-        <p>Travelers: ${trip.travelers} travelers</p>
+        <p>Travelers: ${trip.travelers} people</p>
         <p>Leaving on: ${trip.date}</p>
-        <p>Length: ${trip.duration}</p>
+        <p>Length of trip: ${trip.duration} days</p>
         <p>Lodging: $${trip.destinationDetails.estimatedLodgingCostPerDay} per night</p>
         <p>Flight: $${trip.destinationDetails.estimatedFlightCostPerPerson} per person</p>
         <p>Status: ${trip.status}</p>
@@ -62,6 +62,14 @@ const domUpdates = {
       <p>Estimated cost: $${newTrip.calculateTripCost()}</p>
       <p>Status: ${newTrip.status}</p>
     </div>`
+  },
+  toggleAriaAttribute(element) {
+    let ariaAttr = element.getAttribute('aria-expanded')
+    if(ariaAttr === true) {
+      ariaAttr = false
+    } else {
+      ariaAttr = true
+    }
   }
 }
 

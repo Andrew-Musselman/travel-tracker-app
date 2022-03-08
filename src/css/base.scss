@@ -16,6 +16,11 @@ h3 {
   font-size: 2em;
 }
 
+nav > button {
+  @include border();
+  background-color: $dark-brown;
+}
+
 button {
   color: $light-tan;
   border: none;
@@ -31,6 +36,7 @@ button:hover {
   color: black;
   background: $medium-tan;
 }
+
 
 header {
   width: 30%;

@@ -8,7 +8,7 @@ body {
 }
 
 nav {
-  background-color: $medium-tan;
+  background-color: $light-tan;
   height: 10%;
 }
 h3 {
@@ -16,27 +16,10 @@ h3 {
   font-size: 2em;
 }
 
-nav > button {
-  @include border();
-  background-color: $dark-brown;
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
 }
-
-button {
-  color: $light-tan;
-  border: none;
-  background-color: inherit;
-  padding: 14px 28px;
-  font-size: 1em;
-  cursor: pointer;
-  display: inline-block;
-}
-
-button:hover {
-  @include border();
-  color: black;
-  background: $medium-tan;
-}
-
 
 header {
   width: 30%;

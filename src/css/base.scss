@@ -4,9 +4,43 @@
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 
 body {
-  background: $primary-background;
+  background: $background-image;
 }
 
+nav {
+  background-color: $medium-tan;
+  height: 10%;
+}
+h3 {
+  color: $light-tan;
+  font-size: 2em;
+}
+
+button {
+  color: $light-tan;
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 1em;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button:hover {
+  @include border();
+  color: black;
+  background: $medium-tan;
+}
+
+header {
+  width: 30%;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: $light-tan;
+}
 
 main, nav {
   display: flex;
@@ -16,17 +50,19 @@ main, nav {
 }
 
 .card-container {
+  @include border();
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: white;
+  background-color: $dark-tan;
   width: 50em;
   height: 50em;
   overflow: scroll;
 }
 
 .card {
-  background-color: white;
+  @include border();
+  background-color: $light-tan;
   border: 1px solid black;
   width: 250px;
   height: 400px;

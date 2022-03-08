@@ -10,7 +10,6 @@ class User {
     this.trips = [];
     this.pastTrips = [];
     this.futureTrips = [];
-    this.currentTrip = null;
     this.pendingTrips = [];
   }
   getUsersTrips(tripRepo) {
@@ -20,16 +19,9 @@ class User {
       }
     })
   }
-  addDestinationDetails(destination) {
-    this.trips.forEach(trip => {
-      if (trip.destinationID === destination.id) {
-        trip.destinationDetails = destination
-      }
-    })
-  }
   getDestinations(destinationRepo) {
-    destinationRepo.data.forEach(destination => {
-      this.addDestinationDetails(destination)
+    this.trips.forEach(trip => {
+      trip.addDestinationDetails(destinationRepo)
     })
   }
   sortTrips() {
@@ -38,9 +30,7 @@ class User {
       if (trip.status === 'approved') {
         let tripStart = dayjs(trip.date);
         let tripEnd = dayjs(trip.date).add(trip.duration, 'day');
-        if (dayjs(today).isAfter(tripStart) && dayjs(today).isBefore(tripEnd)) {
-          this.currentTrip = trip
-        } if (dayjs(today).isAfter(trip.date) && this.pastTrips.indexOf(trip) === -1) {
+        if (dayjs(today).isAfter(trip.date) && this.pastTrips.indexOf(trip) === -1) {
           this.pastTrips.push(trip)
         } if (dayjs(today).isBefore(trip.date) && this.futureTrips.indexOf(trip) === -1) {
           this.futureTrips.push(trip)
@@ -56,10 +46,10 @@ class User {
         return trip
       }
     }).reduce((acc, trip) => {
-      acc += ((trip.destinationDetails.estimatedFlightCostPerPerson * trip.travelers) * 2) + (trip.destinationDetails.estimatedLodgingCostPerDay * trip.duration)
+      acc += (trip.calculateTripCost())
       return acc
     }, 0)
-    return Math.round(total * 1.1)
+    return Math.round(total)
   }
 }
 

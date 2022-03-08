@@ -9,6 +9,13 @@ class Trip {
     this.status = tripObj.status;
     this.suggestedActivities = []
   }
+  addDestinationDetails(destinations) {
+    this.destinationDetails = destinations.data.find(destination => this.destinationID === destination.id)
+  }
+  calculateTripCost() {
+    return (this.destinationDetails.estimatedLodgingCostPerDay * this.duration +
+    (this.destinationDetails.estimatedFlightCostPerPerson * 2) * this.travelers) * 1.1
+  }
 }
 
 export default Trip;

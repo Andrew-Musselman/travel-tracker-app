@@ -135,7 +135,7 @@ describe('User', () => {
     destinationRepo = new DestinationRepository(destinations);
     user2Trips = [trips[0], trips[1]]
     user3Trips = [trips[2]]
-    user1PastTrips = [trips[4]]
+    user1PastTrips = [trips[3], trips[4]]
   });
 
   it('Should be a function', () => {
@@ -185,14 +185,6 @@ describe('User', () => {
       user2.sortTrips()
       expect(user1.futureTrips).to.eql([trips[5]])
       expect(user2.futureTrips).to.eql([trips[0], trips[1]])
-    })
-    it('Should be able to tell if the user is currently on a trip', () => {
-      user3.getUsersTrips(tripRepo)
-      user3.sortTrips()
-      user1.getUsersTrips(tripRepo)
-      user1.sortTrips()
-      expect(user1.currentTrip).to.eql(trips[3])
-      expect(user3.currentTrip).to.eql(trips[2])
     })
     it('Should be able to sort pending trips', () => {
       user1.getUsersTrips(tripRepo)

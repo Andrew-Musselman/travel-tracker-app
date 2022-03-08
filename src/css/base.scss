@@ -26,6 +26,7 @@ main, nav {
 }
 
 .card {
+  background-color: white;
   border: 1px solid black;
   width: 250px;
   height: 400px;
@@ -36,4 +37,13 @@ main, nav {
 .card img {
   height: 8em;
   width: inherit;
+}
+
+.new-trip-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
 }

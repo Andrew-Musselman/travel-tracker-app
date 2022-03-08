@@ -9,10 +9,18 @@
 <body>
   <nav>
     <h1>Get away with Fly Me to the Moon</h1>
-    <button>Log In</button>
+    <p id="error-message" class="error-message"></p>
+    <button id="login-button">Log In</button>
+    <form class="login-form hidden">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" value="username">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" value="password">
+      <input type="submit">
+    </form>
   </nav>
   <main>
-    <header>
+    <header class="user-info hidden">
       <h2 id="user-welcome"></h2>
       <p id="user-spend"></p>
       <button id="new-trip-button" aria-expanded="false" aria-controls="new-trip-form">Plan a new trip</button>
@@ -31,10 +39,10 @@
       </form>
       <section class="new-trip-post">
         <p id="new-trip-message"></p>
-        <div id="new-trip-card"></div
+        <div id="new-trip-card"></div>
       </section>
     </header>
-    <section class="trips">
+    <section class="trips hidden">
       <h3>Trips</h3>
       <div class="button-container">
         <button id="all-trips">All Trips</button>

@@ -48,6 +48,9 @@ const domUpdates = {
   toggleHidden(element) {
     element.classList.toggle('hidden')
   },
+  addHidden(element) {
+    element.classList.add('hidden')
+  },
   showTripRequest(trip, destinations) {
     let newTrip = new Trip(trip)
     newTrip.addDestinationDetails(destinations)

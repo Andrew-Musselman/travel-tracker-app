@@ -1,7 +1,9 @@
+let errMessage = document.querySelector('#error-message')
+
 const fetchData = (path) => {
   return fetch(`http://localhost:3001/api/v1/${path}`)
   .then(response => response.json())
-  .catch(err => console.log(err))
+  .catch(err => handleError(err))
 }
 
 const postData = (path, content) => {
@@ -15,7 +17,11 @@ const postData = (path, content) => {
     } else {
       return response
     }
-  }).catch(err => console.log(err))
+  }).catch(err => handleError(err))
+}
+
+const handleError = (err) => {
+  errMessage.innerText = err.message
 }
 
 export {fetchData, postData}

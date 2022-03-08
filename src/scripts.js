@@ -1,7 +1,4 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import {fetchData, postData} from './fetchAPI';
 import User from './User';
@@ -11,8 +8,6 @@ import DestinationRepository from './DestinationRepository';
 import Destination from './Destination';
 import domUpdates from './domUpdates';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
 
 const allTripsBtn = document.querySelector('#all-trips');
 const pastTripsBtn = document.querySelector('#past-trips');
@@ -24,11 +19,51 @@ let tripDestination = document.querySelector('#destination');
 let tripTravelers = document.querySelector('#number-of-travelers');
 let tripStartDate = document.querySelector('#date');
 let tripDuration = document.querySelector('#duration');
-let newTripPost = document.querySelector('.new-trip-post')
+let newTripPost = document.querySelector('.new-trip-post');
+let loginBtn = document.querySelector('#login-button');
+let loginForm = document.querySelector('.login-form');
+let loginUsername = document.querySelector('#username');
+let loginPassword = document.querySelector('#password');
+let userInfo = document.querySelector('.user-info');
+let tripsSection = document.querySelector('.trips');
+let errMessage = document.querySelector('#error-message')
 
 let ourUser;
 let trips;
 let destinations;
+
+const validateLogin = (e) => {
+  e.preventDefault()
+  let userID = validateUsername()
+  if (userID && validatePassword()) {
+    getData(userID)
+    domUpdates.toggleHidden(userInfo)
+    domUpdates.toggleHidden(tripsSection)
+  } else {
+    errMessage.innerText = 'Invalid Username or Password, please try again'
+  }
+}
+
+const validateUsername = () => {
+  let username = loginUsername.value
+  let name = username.split('').slice(0,8).join('');
+  let userID = parseInt(username.split('').slice(8).join(''))
+  if (name === 'traveler' && userID > 0 && userID <= 50) {
+    domUpdates.toggleHidden(loginForm)
+    domUpdates.addHidden(errMessage)
+    return userID
+  } else {
+    return false
+  }
+}
+
+const validatePassword = () => {
+  if (loginPassword.value === 'traveler') {
+    return true
+  } else {
+    return false
+  }
+}
 
 const renderDashboard = (user, destination) => {
   domUpdates.generateTrips(user.trips)
@@ -77,10 +112,6 @@ const postNewTrip = (e) => {
   setTimeout(() => domUpdates.toggleHidden(newTripPost), 5000)
 }
 
-
-window.addEventListener('load', () => {
-  getData(5)
-})
 newTripBtn.addEventListener('click', () => {
   domUpdates.toggleHidden(newTripForm)
   domUpdates.toggleAriaAttribute(newTripBtn)
@@ -100,4 +131,11 @@ futureTripsBtn.addEventListener('click', () => {
 })
 pendingTripsBtn.addEventListener('click', () => {
   domUpdates.generateTrips(ourUser.pendingTrips)
+})
+loginBtn.addEventListener('click', () => {
+  domUpdates.toggleHidden(loginBtn)
+  domUpdates.toggleHidden(loginForm)
+})
+loginForm.addEventListener('submit', (e) => {
+  validateLogin(e)
 })

@@ -83,6 +83,7 @@ window.addEventListener('load', () => {
 })
 newTripBtn.addEventListener('click', () => {
   domUpdates.toggleHidden(newTripForm)
+  domUpdates.toggleAriaAttribute(newTripBtn)
 })
 newTripForm.addEventListener('submit', (e) => {
   postNewTrip(e)

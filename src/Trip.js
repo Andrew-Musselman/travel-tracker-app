@@ -13,8 +13,8 @@ class Trip {
     this.destinationDetails = destinations.data.find(destination => this.destinationID === destination.id)
   }
   calculateTripCost() {
-    return (this.destinationDetails.estimatedLodgingCostPerDay * this.duration +
-    (this.destinationDetails.estimatedFlightCostPerPerson * 2) * this.travelers) * 1.1
+    return Math.round((this.destinationDetails.estimatedLodgingCostPerDay * this.duration +
+    (this.destinationDetails.estimatedFlightCostPerPerson * 2) * this.travelers) * 1.1)
   }
 }
 

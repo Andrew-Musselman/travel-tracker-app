@@ -3,7 +3,7 @@
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-import {fetchData} from './fetchAPI';
+import {fetchData, postData} from './fetchAPI';
 import User from './User';
 import TripRepository from './TripRepository';
 import Trip from './Trip';
@@ -20,33 +20,72 @@ const futureTripsBtn = document.querySelector('#future-trips');
 const pendingTripsBtn = document.querySelector('#pending-trips');
 const newTripBtn = document.querySelector('#new-trip-button');
 const newTripForm = document.querySelector('.new-trip-form')
+let tripDestination = document.querySelector('#destination');
+let tripTravelers = document.querySelector('#number-of-travelers');
+let tripStartDate = document.querySelector('#date');
+let tripDuration = document.querySelector('#duration');
+let newTripPost = document.querySelector('.new-trip-post')
 
 let ourUser;
-let tripData;
-let destinationData;
+let trips;
+let destinations;
 
-const getData = () => {
-  return Promise.all([fetchData('http://localhost:3001/api/v1/travelers/3'), fetchData('http://localhost:3001/api/v1/trips'), fetchData('http://localhost:3001/api/v1/destinations')])
-  .then(data => {
-    console.log(data)
-    ourUser = new User(data[0])
-    tripData = new TripRepository(data[1].trips)
-    destinationData = new DestinationRepository(data[2].destinations)
-  }).then(() => {
-    ourUser.getUsersTrips(tripData)
-    ourUser.sortTrips()
-    ourUser.getDestinations(destinationData)
-  }).then(() => {
-    console.log(ourUser)
-    domUpdates.generateTrips(ourUser.trips)
-    domUpdates.generateHeader(ourUser)
-  })
-
+const renderDashboard = (user, destination) => {
+  domUpdates.generateTrips(user.trips)
+  domUpdates.generateHeader(user)
+  domUpdates.generateDestinations(destination)
 }
 
-window.addEventListener('load', getData)
+const initializeData = (userData, tripData, destinationData) => {
+  trips = new TripRepository(tripData.trips)
+  ourUser = new User(userData)
+  destinations = new DestinationRepository(destinationData.destinations)
+  ourUser.getUsersTrips(trips)
+  ourUser.sortTrips()
+  ourUser.getDestinations(destinations)
+}
+
+const getData = (id) => {
+  return Promise.all([fetchData(`travelers/${id}`), fetchData('trips'), fetchData('destinations')])
+  .then(data => {
+    initializeData(data[0], data[1], data[2])
+  }).then(() => {
+    renderDashboard(ourUser, destinations)
+  })
+}
+
+const postNewTrip = (e) => {
+  e.preventDefault();
+  let newTrip;
+  const newTripData = {
+    id: trips.data.length + 1,
+    userID: ourUser.id,
+    destinationID: destinations.data.find(place => {
+      return place.destination === tripDestination.value
+    }).id,
+    travelers: tripTravelers.value,
+    date: tripStartDate.value.replaceAll('-', '/'),
+    duration: tripDuration.value,
+    status: 'pending',
+    suggestedActivities: []
+  }
+  domUpdates.showTripRequest(newTripData, destinations)
+  Promise.all([postData('trips', newTripData)])
+  .then(() => getData(ourUser.id));
+  e.target.reset()
+  domUpdates.toggleHidden(newTripForm)
+  setTimeout(() => domUpdates.toggleHidden(newTripPost), 5000)
+}
+
+
+window.addEventListener('load', () => {
+  getData(5)
+})
 newTripBtn.addEventListener('click', () => {
   domUpdates.toggleHidden(newTripForm)
+})
+newTripForm.addEventListener('submit', (e) => {
+  postNewTrip(e)
 })
 
 allTripsBtn.addEventListener('click', () => {

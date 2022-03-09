@@ -57,14 +57,16 @@ main, nav {
 
 .card {
   @include border();
+  color: black;
+  font-size: 1em;
   background-color: $light-tan;
-  border: 1px solid black;
   width: 250px;
   height: 400px;
   padding: 3em;
   padding-top: 1em;
   margin: .5em;
 }
+
 .card img {
   height: 8em;
   width: inherit;

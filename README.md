@@ -1,105 +1,93 @@
-# Webpack Starter Kit
+# Travel Tracker - Fly Me to the Moon
 
-## Clone This Repo
+Developed by [Andrew Musselman](https://github.com/Andrew-Musselman)
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+Travel Tracker is the final Mod 2 project for Turing School of Software and Design with the goal of solidifying my understanding of:
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+- Using OOP to drive the design of the application and the code
+- Working with an API to send and receive data
+- The code review process
+- Creating robust test suites that thoroughly tests all functionality of a client-side application
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+
 
 ## Setup
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+1. Clone down this repo and the [local server repo](https://github.com/turingschool-examples/travel-tracker-api) to your local machine
+1. Then to install the library dependencies for both repo's run: `npm install`
+1. Run `npm start` in both repos to start the server and run the site
+1. Open up `http://localhost:8080/` to view the page
 
-Then install the library dependencies. Run:
 
-```bash
-npm install
-```
+## Login
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+<img width="1437" alt="Fly me to the moon login page" src="https://user-images.githubusercontent.com/92277979/157338665-d59f2599-2999-4407-8368-9af70e1ca638.png">
 
-## Where to Add Your Code
+ Once the page is running you will see a log in button in the top right corner of the screen
 
-### JavaScript
+ Clicking the log in button will open the log in form
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+ Once the log in form is open enter a username and password and click the submit button
 
-**Create all of your feature code files in the `src` directory.**
+ The username will be the word `traveler` followed by a number between `01` and `50`, this number will be the user ID and all the data will be associated with that user
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+ The password will be the word `traveler`
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+## Navigating the page
 
-### HTML
+<img width="1420" alt="Fly me to the moon main page" src="https://user-images.githubusercontent.com/92277979/157342169-4340b9da-f10f-4b4e-88d3-7ea29fefac8f.png">
 
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
 
-### CSS (SCSS/SASS)
+ Once logged in there is a section on the side that greets you by name and shows how much you have spent on travel this year
 
-This project is setup to use SCSS/Sass files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
+ There will also be a button to plan a new trip that opens up a new trip form
 
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`scripts.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
+ On the right there is a section displaying the user's trips
 
-### Images
+ You can toggle between `All` `Past` `Upcoming` and `Pending` trips
 
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
+ <img width="323" alt="New trip form" src="https://user-images.githubusercontent.com/92277979/157342305-265722a2-a4c1-4c9f-a734-2ac600dc3f42.png">
 
-## How to View Your Code in Action
 
-In the terminal, run:
+ Request a new trip from the new trip form by selecting a destination, how many travelers, a start date, and how long you want to go
 
-```bash
-npm start
-```
+ Once you submit the request form a trip card shows up on the screen where the form was
 
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
+ The trip card shows the trip details as well as the estimated cost
 
-```bash
-Project is running at http://localhost:8080/
-```
+ After a few moments the trip card will disappear but the requested trip will be in the trips section with a status of pending
 
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
+## Technologies
 
----
+- JavaScript
+- Day.js
+- Css/SCSS
+- HTML
+- Mocha/Chai
+- Fetch API
 
-## Test Files Organization
+## Testing
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
+All the JavaScript classes were written utilizing test driven development
 
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
+A thorough test suite was written for each class and then implementation code was written to pass the tests
 
-## Running Your Tests
+All JavaScript classes were written and tested before any other part of the code was written
 
-Run your test suite using the command:
+## Future Steps
 
-```bash
-npm test
-```
+- Utilize micromodal.js and glide.js packages to improve the UX of the page
+- Create an `Agent` log in with admin privileges to add new trips, new destinations, and to see all User details 
 
-The test results will output to the terminal.
+## Wins & Challenges
 
----
+#### Wins
+ - Utilizing Day.js to easily format and manipulate dates
+ - Writing thoughtful test suites before any implementation code
+ - Creating dynamic fetch requests that could be used for multiple endpoints
+ - Utilizing some variables and mixins in SCSS
 
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+#### Challenges
+ - Staying organized
+  - There were many edits to my issues and project board after I realized the scope of a task was larger than I expected
+  - I went down many rabbit holes trying to learn new packages or technologies that I never ended up implementation in my project
